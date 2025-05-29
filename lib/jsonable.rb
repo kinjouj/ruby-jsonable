@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "json"
-
 module Jsonable
   def to_json(*)
     excludes = exclude_jsonable || []
