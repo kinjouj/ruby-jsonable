@@ -5,13 +5,19 @@ class Sample
 
   def initialize
     @name = "sample"
+    @age  = 30
+  end
+
+  def exclude_jsonable
+    [ "name" ]
   end
 end
 
 describe Jsonable do
   it "test" do
     sample = Sample.new
-    expect(sample.to_json).not_to be_nil
-    expect(sample.to_json).to eq({ name: "sample" }.to_json)
+    json   = sample.to_json
+    expect(json).not_to be_nil
+    expect(json).to eq({ age: 30 }.to_json)
   end
 end
