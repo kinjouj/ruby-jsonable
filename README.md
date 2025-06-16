@@ -4,11 +4,11 @@
 class Sample
   include Jsonable
 
-  def initialize
+  def initialize(name)
     @name = name
   end
 end
 
-sample = Sample.new
+sample = Sample.new("hoge")
 puts sample.to_json
 ```
