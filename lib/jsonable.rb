@@ -3,10 +3,11 @@
 module Jsonable
   def to_hash
     excludes = exclude_jsonable || []
-    hash = self.instance_variables.map {|key|
+    instance_variables.map {|key|
       keystr = key.to_s.tr("@", "")
       next if excludes.include?(keystr)
-      [ keystr, self.instance_variable_get(key)]
+
+      [ keystr, instance_variable_get(key)]
     }.compact.to_h
   end
 
