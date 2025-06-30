@@ -13,6 +13,10 @@ class Sample
   def exclude_jsonable
     [ "name" ]
   end
+
+  def enable_additions?
+    true
+  end
 end
 
 describe Jsonable do
@@ -20,6 +24,6 @@ describe Jsonable do
     sample = Sample.new
     json   = sample.to_json
     expect(json).not_to be_nil
-    expect(json).to eq({ age: 30 }.to_json)
+    expect(json).to eq({ age: 30, JSON.create_id => sample.class.name }.to_json)
   end
 end

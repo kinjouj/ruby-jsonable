@@ -12,10 +12,16 @@ module Jsonable
   end
 
   def to_json(*)
-    to_hash.to_json
+    hash = to_hash
+    hash[JSON.create_id] = self.class.name if enable_additions?
+    hash.to_json
   end
 
   def exclude_jsonable
     []
+  end
+
+  def enable_additions?
+    false
   end
 end
