@@ -22,8 +22,9 @@ end
 describe Jsonable do
   it "test" do
     sample = Sample.new
-    json   = sample.to_json
-    expect(json).not_to be_nil
+    expect(sample.exclude_jsonable).to eq(["name"])
+    expect(sample.enable_additions?).to be_truthy
+    json = sample.to_json
     expect(json).to eq({ age: 30, JSON.create_id => sample.class.name }.to_json)
   end
 end
