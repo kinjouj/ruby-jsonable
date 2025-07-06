@@ -17,6 +17,9 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
+Style/Alias:
+  Enabled: false
+
 Style/BlockDelimiters:
   Enabled: false
 
