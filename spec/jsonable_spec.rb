@@ -8,10 +8,11 @@ class Sample
   def initialize
     @name = "sample"
     @age  = 30
+    @ext  = "test"
   end
 
   def exclude_jsonable
-    [ :name ]
+    [ :name, "ext" ]
   end
 
   def enable_additions?
@@ -22,7 +23,7 @@ end
 describe Jsonable do
   it "test" do
     sample = Sample.new
-    expect(sample.exclude_jsonable).to eq([:name])
+    expect(sample.exclude_jsonable).to eq([:name, "ext"])
     expect(sample.enable_additions?).to be_truthy
     expect(sample.to_h).to eq({ age: 30 })
     expect(sample.to_hash).to eq({ age: 30 })

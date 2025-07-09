@@ -2,10 +2,10 @@
 
 module Jsonable
   def to_hash
-    excludes = exclude_jsonable || []
+    excludes = (exclude_jsonable || []).map(&:to_s)
     instance_variables.map {|key|
       keystr = key.to_s.tr("@", "")
-      next if excludes.include?(keystr.to_sym)
+      next if excludes.include?(keystr)
 
       [ keystr.to_sym, instance_variable_get(key) ]
     }.compact.to_h
