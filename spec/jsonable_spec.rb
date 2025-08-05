@@ -12,7 +12,7 @@ class Sample
   end
 
   def exclude_jsonable
-    [ :name, "ext" ]
+    [:name, "ext"]
   end
 
   def enable_additions?
