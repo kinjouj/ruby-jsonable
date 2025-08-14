@@ -1,9 +1,23 @@
+plugins:
+  - rubocop-performance
+  - rubocop-rspec
+
 AllCops:
-  TargetRubyVersion: 3.2
   Exclude:
-    - '*.gemspec'
+    - "*.gemspec"
+  TargetRubyVersion: 3.3
   NewCops: enable
   SuggestExtensions: false
+
+Layout/LineLength:
+  Max: 125
+  AllowHeredoc: true
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: false
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: false
 
 Metrics/AbcSize:
   Enabled: false
@@ -17,30 +31,33 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Enabled: false
 
-Style/Alias:
-  Enabled: false
-
-Style/BlockDelimiters:
-  Enabled: false
-
 Style/ClassVars:
   Enabled: false
 
 Style/Documentation:
   Enabled: false
 
-Style/RescueModifier:
-  Enabled: false
-
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
 
-Layout/LineLength:
-  Max: 100
+Style/SymbolArray:
+  EnforcedStyle: brackets
 
-Layout/SpaceInsideArrayLiteralBrackets:
+RSpec/ContextWording:
   Enabled: false
 
-Layout/SpaceInsideBlockBraces:
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/IndexedLet:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ReceiveMessages:
+  Enabled: false
+
+RSpec/ReturnFromStub:
   Enabled: false

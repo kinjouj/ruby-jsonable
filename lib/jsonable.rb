@@ -12,7 +12,7 @@ module Jsonable
   end
 
   def to_json(*)
-    hash = to_h
+    hash = to_hash
     hash[JSON.create_id] = self.class.name if enable_additions?
     hash.to_json
   end
@@ -24,6 +24,4 @@ module Jsonable
   def enable_additions?
     false
   end
-
-  alias_method :to_h, :to_hash
 end

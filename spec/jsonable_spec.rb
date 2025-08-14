@@ -21,22 +21,20 @@ class Sample
 end
 
 describe Jsonable do
-  it "test" do
+  it "successful" do
     sample = Sample.new
     expect(sample.exclude_jsonable).to eq([:name, "ext"])
-    expect(sample.enable_additions?).to be_truthy
-    expect(sample.to_h).to eq({ age: 30 })
+    expect(sample).to be_enable_additions
     expect(sample.to_hash).to eq({ age: 30 })
     json = sample.to_json
     expect(json).to eq({ age: 30, JSON.create_id => sample.class.name }.to_json)
   end
 
   it "module default test" do
-    obj = Object.new.extend(Jsonable)
-    expect(obj.enable_additions?).to be_falsy
+    obj = Object.new.extend(described_class)
+    expect(obj).not_to be_enable_additions
     expect(obj.exclude_jsonable).to eq([])
     expect(obj.to_json).to eq("{}")
     expect(obj.to_hash).to eq({})
-    expect(obj.to_h).to eq({})
   end
 end
