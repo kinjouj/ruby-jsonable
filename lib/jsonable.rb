@@ -3,8 +3,8 @@
 module Jsonable
   def to_hash
     excludes = (exclude_jsonable || []).map(&:to_s)
-    instance_variables.map {|key|
-      keystr = key.to_s.tr("@", "")
+    instance_variables.map {|key| # rubocop:disable Style/BlockDelimiters,Performance/MapCompact
+      keystr = key[1..]
       next if excludes.include?(keystr)
 
       [keystr.to_sym, instance_variable_get(key)]

@@ -3,8 +3,6 @@ plugins:
   - rubocop-rspec
 
 AllCops:
-  Exclude:
-    - "*.gemspec"
   TargetRubyVersion: 3.3
   NewCops: enable
   SuggestExtensions: false
